@@ -1,0 +1,43 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'translachat-web/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'translachat-web/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: translachat-web
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: translachat-web/package-lock.json
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build React App
+        run: npm run build
+        # env:
+        #   # Vercel handles production envs, but CI needs them if they are part of the build step
+        #   VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }} 
+
+      # Uncomment if you use ESLint
+      # - name: Run Lint
+      #   run: npm run lint

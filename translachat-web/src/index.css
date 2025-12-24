@@ -1,0 +1,36 @@
+
+@import "tailwindcss";
+@keyframes chase {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
+
+/* Define the utility class for the animation */
+.animate-chase {
+    animation: chase 1.2s infinite ease-in-out;
+}
+
+/* Target the Scrollbar Track (the bar itself) for all elements with .custom-scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Width of the vertical scrollbar */
+    height: 8px; /* Height of the horizontal scrollbar (if needed) */
+}
+
+/* Make the track dark (matching the application background) */
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #111827; /* Tailwind's gray-900 (or slightly darker) */
+    border-radius: 10px;
+}
+
+/* Style the Scrollbar Handle (the part you drag) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-800); /* Tailwind's indigo-600 */
+    border-radius: 10px;
+    border: 2px solid #1f2937; /* A slight dark border (gray-800) to stand out from the track */
+}
+
+/* Style the handle when hovering over it */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #6366f1; /* Tailwind's indigo-500 (lighter on hover) */
+}
+
