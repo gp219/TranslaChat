@@ -1,5 +1,6 @@
 
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 import express, { json } from 'express';
 import connectDB from './app/config/db.config.js';
 import apiRouter from './app/routes/index.js';
