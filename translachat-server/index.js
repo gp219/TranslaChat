@@ -8,16 +8,20 @@ import { createServer } from 'http'; // Standard Node.js module
 import { Server } from 'socket.io'; // Socket.IO Server
 import { handleSocketEvents } from './app/socket/socketHandler.js';
 import cors from 'cors';
-
+const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
 const app = express();
-app.use(cors())
+app.use(cors({
+    origin: allowedOrigin,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}))
 
 // for socket 
 const httpServer = createServer(app); // Create HTTP server using Express app
 // --- Socket.IO Setup ---
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:5173", // Replace with your frontend URL
+        origin: allowedOrigin,
         methods: ["GET", "POST", "PUT", "DELETE"]
     }
 });
