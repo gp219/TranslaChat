@@ -6,8 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContextDefinition';
 import { Link } from 'react-router-dom';
 
-// Define your backend base URL
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = `${import.meta.env.VITE_API_BASE_URL}`;
 
 const Register = () => {
     const [formData, setFormData] = useState({

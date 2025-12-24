@@ -12,9 +12,9 @@ import { useToast } from '../../custom hooks/useToast';
 import EmojiPicker from 'emoji-picker-react';
 import { useResponsive } from '../../contexts/ResponsiveContext';
 
-// IMPORTANT: Define the WebSocket URL (same as your Express server)
-const SOCKET_URL = 'http://localhost:3000';
-const API_BASE_URL = 'http://localhost:3000/api';
+
+const SOCKET_URL = `${import.meta.env.VITE_SOCKET_URL}`;
+const API_BASE_URL = `${import.meta.env.VITE_API_BASE_URL}`;
 
 // --- Global Socket Instance ---
 let socket;
